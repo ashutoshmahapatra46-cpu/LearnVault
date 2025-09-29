@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LearnVault.io</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='8' width='36' height='36' fill='%2360a5fa'/><text x='50%' y='55%' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>S</text></svg>" 
+           alt="logo" style="width:44px;height:44px;border-radius:10px;"> 
+      <div>
+        <h1>LearnVault</h1>
+        <div class="subtitle">Create goals, set deadlines, get reminders & visualize timelines — saved locally.</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Sidebar / Task creation -->
+      <aside class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <strong>Create task</strong>
+          <div style="font-size:12px;color:var(--muted)">Local save • Notifications</div>
+        </div>
+
+        <div>
+          <label>Title</label>
+          <input id="title" type="text" placeholder="e.g. Read Algorithms chapter 4">
+
+          <label style="margin-top:8px">Description</label>
+          <textarea id="desc" placeholder="Short notes / milestones"></textarea>
+
+          <div class="form-row">
+            <div style="flex:1">
+              <label>Start date</label>
+              <input id="start" type="date"  class="custom-date">
+            </div>
+            <div style="width:140px">
+              <label>Due date</label>
+              <input id="due" type="date" class="custom-date">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div style="flex:1">
+              <label>Estimated hours</label>
+              <input id="hours" type="number" min="0" value="1">
+            </div>
+            <div style="width:140px">
+              <label>Priority</label>
+              <select id="priority">
+                <option value="low">Low</option>
+                <option value="med" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="addBtn" class="btn">Add task</button>
+            <button id="clearBtn" class="btn btn-ghost small">Clear fields</button>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>Tasks</strong>
+          <div style="font-size:12px;color:var(--muted)"><span id="count">0</span> total</div>
+        </div>
+
+        <div class="tasks-list" id="tasksList"></div>
+
+        
+      </aside>
+
+      <!-- Main content -->
+      <main>
+        <div class="topbar">
+          <div class="controls">
+            <button id="notifyPerm" class="btn small">Enable Reminders</button>
+            <button id="completeAll" class="btn-ghost small">Mark all complete</button>
+            <button id="clearAll" class="btn-ghost small">Clear all</button>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:13px;color:var(--muted)">Today: <span id="today"></span></div>
+            <div style="font-size:12px;color:var(--muted)">Tips: click a bar to mark complete / edit</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <strong>Overview</strong>
+            <div style="font-size:13px;color:var(--muted)" id="rangeLabel">No tasks yet</div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Completed</div>
+              <div class="stat-value" id="completedCount">0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Pending</div>
+              <div class="stat-value" id="pendingCount">0</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Total hours</div>
+              <div class="stat-value" id="totalHours">0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label style="margin-bottom:6px">Progress</label>
+            <div class="progress"><i id="progressBar"></i></div>
+          </div>
+
+          <div class="timeline-wrap">
+            <label class="timeline-label">Timeline</label>
+            <div class="timeline" id="timelineContainer">
+              <div class="timeline-grid" id="timelineGrid"></div>
+            </div>
+            <div class="legend" id="legend"></div>
+          </div>
+        </div>
+
+        <footer>
+          <div>Saved to browser localStorage. Reminders use the Notification API (may require secure origin).</div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script src="script2.js"></script>
+</body>
+</html>
